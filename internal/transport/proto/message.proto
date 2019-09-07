@@ -1,0 +1,6 @@
+syntax = "proto3";
+package transport;
+
+message Message {
+    string body = 1;
+}
