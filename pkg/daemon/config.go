@@ -5,16 +5,19 @@ import (
 )
 
 type Config struct {
-	Host string
-	Port int
-	Nick string
+	Port          int
+	UnixSocket    string
+	UseSocketFile bool
 }
 
 func InitConfig() (*Config, error) {
+	viper.SetDefault("CDGO_DAEMON_PORT", 7979)
+	viper.SetDefault("CDGO_DAEMON_UNIX_SOCKET", "/var/run/cdgo.sock")
+	viper.SetDefault("CDGO_DAEMON_USE_UNIX_SOCKET", false)
 	config := &Config{
-		Host: viper.GetString("CDGO_DAEMON_HOST"),
-		Port: viper.GetInt("CDGO_DAEMON_PORT"),
-		Nick: viper.GetString("CDGO_USER_NICK"),
+		Port:          viper.GetInt("CDGO_DAEMON_PORT"),
+		UnixSocket:    viper.GetString("CDGO_DAEMON_UNIX_SOCKET"),
+		UseSocketFile: viper.GetBool("CDGO_DAEMON_USE_UNIX_SOCKET"),
 	}
 	return config, nil
 }

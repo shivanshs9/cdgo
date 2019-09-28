@@ -49,8 +49,8 @@ func initConfig() {
 	} else {
 		viper.SetConfigName("config")
 		viper.AddConfigPath(".")
-		viper.AddConfigPath("/etc/todos")
-		viper.AddConfigPath("$HOME/.todos")
+		viper.AddConfigPath("/etc/cdgo")
+		viper.AddConfigPath("$HOME/.cdgo")
 	}
 
 	viper.AutomaticEnv()
